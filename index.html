@@ -1,0 +1,370 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>ESTATE ELITE | Luxury Real Estate & Investment</title>
+    
+    <!-- Premium Fonts -->
+    <link href="https://fonts.googleapis.com/css2?family=Playfair+Display:wght@700;900&family=Montserrat:wght@300;400;600;700&display=swap" rel="stylesheet">
+    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.4.0/css/all.min.css">
+    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/animate.css/4.1.1/animate.min.css"/>
+
+    <style>
+        :root {
+            --gold: #c5a059;
+            --navy: #0a192f;
+            --navy-light: #112240;
+            --white: #ffffff;
+            --text-gray: #8892b0;
+            --soft-bg: #f8f9fa;
+        }
+
+        /* --- GLOBAL --- */
+        * { margin: 0; padding: 0; box-sizing: border-box; }
+        body { font-family: 'Montserrat', sans-serif; background: var(--white); color: var(--navy); overflow-x: hidden; scroll-behavior: smooth; }
+        h1, h2, h3, .serif { font-family: 'Playfair Display', serif; }
+        ul { list-style: none; }
+        a { text-decoration: none; color: inherit; transition: 0.3s; }
+        section { padding: 100px 8%; }
+        .container { max-width: 1400px; margin: auto; }
+
+        /* --- BUTTONS --- */
+        .btn { padding: 16px 40px; border-radius: 0; font-weight: 700; cursor: pointer; display: inline-block; border: none; transition: 0.4s; text-transform: uppercase; font-size: 13px; letter-spacing: 2px; }
+        .btn-gold { background: var(--gold); color: white; }
+        .btn-gold:hover { background: var(--navy); transform: translateY(-5px); box-shadow: 0 10px 20px rgba(197,160,89,0.3); }
+        .btn-outline { border: 1px solid var(--gold); color: var(--gold); background: transparent; }
+
+        /* --- TITLES --- */
+        .v-title { text-align: center; margin-bottom: 70px; }
+        .v-title h2 { font-size: 48px; color: var(--navy); margin-bottom: 15px; }
+        .v-title .line { width: 80px; height: 3px; background: var(--gold); margin: auto; }
+
+        /* 1. TOP BAR */
+        .top-bar { background: var(--navy); color: white; padding: 12px 8%; display: flex; justify-content: space-between; font-size: 12px; letter-spacing: 1px; }
+
+        /* 2. HEADER */
+        header { background: rgba(255,255,255,0.95); padding: 25px 8%; display: flex; justify-content: space-between; align-items: center; position: sticky; top: 0; z-index: 2000; box-shadow: 0 10px 30px rgba(0,0,0,0.05); backdrop-filter: blur(10px); }
+        .logo { font-size: 26px; font-weight: 900; color: var(--navy); letter-spacing: -1px; }
+        .logo span { color: var(--gold); }
+        nav ul { display: flex; gap: 30px; }
+        nav ul li a { font-weight: 600; font-size: 13px; color: var(--navy); text-transform: uppercase; }
+        nav ul li a:hover { color: var(--gold); }
+
+        /* 3. HERO SECTION */
+        .hero { height: 95vh; background: linear-gradient(rgba(10,25,47,0.5), rgba(10,25,47,0.5)), url('https://images.unsplash.com/photo-1512917774080-9991f1c4c750?q=80&w=2070&auto=format&fit=crop'); background-size: cover; background-position: center; display: flex; align-items: center; justify-content: center; text-align: center; color: white; }
+        .hero-box h1 { font-size: 80px; margin-bottom: 25px; line-height: 1.1; }
+        .hero-box p { font-size: 20px; margin-bottom: 40px; font-weight: 300; letter-spacing: 1px; }
+
+        /* 4. SEARCH BAR UI */
+        .search-area { background: white; padding: 40px; margin-top: -60px; box-shadow: 0 30px 60px rgba(0,0,0,0.1); display: grid; grid-template-columns: repeat(4, 1fr) auto; gap: 20px; align-items: end; border-radius: 5px; }
+        .search-group label { display: block; font-size: 11px; font-weight: 700; color: var(--gold); text-transform: uppercase; margin-bottom: 10px; }
+        .search-group select, .search-group input { width: 100%; padding: 12px; border: 1px solid #eee; outline: none; }
+
+        /* 9. LISTINGS GRID */
+        .listing-grid { display: grid; grid-template-columns: repeat(auto-fit, minmax(400px, 1fr)); gap: 30px; }
+        .prop-card { background: white; border: 1px solid #eee; position: relative; transition: 0.4s; overflow: hidden; }
+        .prop-card:hover { transform: translateY(-10px); box-shadow: 0 20px 40px rgba(0,0,0,0.05); }
+        .prop-img { height: 300px; background-size: cover; background-position: center; position: relative; }
+        .prop-tag { position: absolute; top: 20px; left: 20px; background: var(--gold); color: white; padding: 5px 15px; font-size: 11px; font-weight: 700; }
+        .prop-info { padding: 30px; }
+        .prop-info h3 { font-size: 24px; margin-bottom: 10px; }
+        .prop-price { font-size: 22px; color: var(--gold); font-weight: 700; margin-bottom: 15px; }
+        .prop-meta { display: flex; gap: 20px; font-size: 13px; color: var(--text-gray); border-top: 1px solid #eee; padding-top: 20px; }
+
+        /* 13. MORTGAGE CALCULATOR */
+        .calc-box { background: var(--navy); color: white; padding: 60px; border-radius: 10px; display: grid; grid-template-columns: 1fr 1fr; gap: 50px; }
+        .calc-form input { width: 100%; padding: 15px; margin-bottom: 20px; background: var(--navy-light); border: 1px solid #233554; color: white; }
+
+        /* 28. MEGA FOOTER */
+        footer { background: var(--navy); color: white; padding: 100px 8% 40px; }
+        .footer-grid { display: grid; grid-template-columns: 2fr 1fr 1fr 1fr 1.5fr; gap: 50px; }
+        .footer-col h4 { color: var(--gold); margin-bottom: 30px; font-size: 16px; text-transform: uppercase; letter-spacing: 2px; }
+        .footer-col p, .footer-col li { font-size: 14px; color: var(--text-gray); margin-bottom: 15px; line-height: 1.8; }
+        .footer-col li a:hover { color: var(--gold); padding-left: 5px; }
+
+        /* RESPONSIVE */
+        @media (max-width: 768px) {
+            .hero-box h1 { font-size: 40px; }
+            .search-area { grid-template-columns: 1fr; margin-top: 20px; }
+            .listing-grid { grid-template-columns: 1fr; }
+            header { padding: 15px 5%; }
+            nav { display: none; }
+            .footer-grid { grid-template-columns: 1fr; }
+            .calc-box { grid-template-columns: 1fr; }
+        }
+    </style>
+</head>
+<body>
+
+    <!-- 1. Top Bar -->
+    <div class="top-bar">
+        <span><i class="fas fa-map-marker-alt"></i> GLOBAL LUXERY REAL ESTATE ADVISORS</span>
+        <span><i class="fas fa-phone"></i> +1 800-ESTATE-PRO</span>
+    </div>
+
+    <!-- 2. Header -->
+    <header>
+        <div class="logo">ESTATE<span>ELITE</span></div>
+        <nav>
+            <ul>
+                <li><a href="#home">Home</a></li>
+                <li><a href="#listings">Properties</a></li>
+                <li><a href="#services">Services</a></li>
+                <li><a href="#agents">Agents</a></li>
+                <li><a href="#calc">Mortgage</a></li>
+            </ul>
+        </nav>
+        <button class="btn btn-gold" style="padding: 12px 25px; font-size: 11px;">List Property</button>
+    </header>
+
+    <!-- 3. Hero Section -->
+    <section class="hero" id="home">
+        <div class="hero-box animate__animated animate__fadeInUp">
+            <p style="text-transform:uppercase; letter-spacing:5px; margin-bottom:20px;">Exceptional Homes. Exceptional Lives.</p>
+            <h1>Discover Your <br>Dream Legacy.</h1>
+            <div style="display:flex; justify-content:center; gap:20px;">
+                <button class="btn btn-gold">View Portfolio</button>
+                <button class="btn btn-outline" style="color:white; border-color:white;">Contact Advisor</button>
+            </div>
+        </div>
+    </section>
+
+    <!-- 4. Smart Search UI -->
+    <div class="container">
+        <div class="search-area">
+            <div class="search-group">
+                <label>Location</label>
+                <input type="text" placeholder="City, Zip or Neighborhood">
+            </div>
+            <div class="search-group">
+                <label>Property Type</label>
+                <select>
+                    <option>Penthouse</option>
+                    <option>Modern Villa</option>
+                    <option>Luxury Mansion</option>
+                </select>
+            </div>
+            <div class="search-group">
+                <label>Price Range</label>
+                <select>
+                    <option>$1M - $5M</option>
+                    <option>$5M - $20M</option>
+                    <option>$20M+</option>
+                </select>
+            </div>
+            <div class="search-group">
+                <label>Bedrooms</label>
+                <select>
+                    <option>3+ Beds</option>
+                    <option>5+ Beds</option>
+                </select>
+            </div>
+            <button class="btn btn-gold">Search</button>
+        </div>
+    </div>
+
+    <!-- 5. Global Sales Statistics (Section 5) -->
+    <section style="background:var(--soft-bg); text-align:center;">
+        <div class="container" style="display:flex; justify-content:space-around; flex-wrap:wrap; gap:40px;">
+            <div><h2 style="font-size:45px; color:var(--gold)">$15B+</h2><p style="font-size:12px; font-weight:700;">SALES VOLUME</p></div>
+            <div><h2 style="font-size:45px; color:var(--gold)">1200+</h2><p style="font-size:12px; font-weight:700;">PROPERTIES SOLD</p></div>
+            <div><h2 style="font-size:45px; color:var(--gold)">25+</h2><p style="font-size:12px; font-weight:700;">COUNTRIES SERVED</p></div>
+            <div><h2 style="font-size:45px; color:var(--gold)">98%</h2><p style="font-size:12px; font-weight:700;">CLIENT SATISFACTION</p></div>
+        </div>
+    </section>
+
+    <!-- 7. Founder's Vision -->
+    <section id="about">
+        <div class="container" style="display:grid; grid-template-columns:1fr 1fr; gap:80px; align-items:center;">
+            <div class="about-img">
+                <img src="https://images.unsplash.com/photo-1600585154340-be6161a56a0c?q=80&w=2070&auto=format&fit=crop" style="width:100%; border-radius:5px; box-shadow:30px 30px 0 var(--gold);">
+            </div>
+            <div class="about-text">
+                <h2 style="font-size:45px; margin-bottom:25px;">Building Trust <br>Through <span>Excellence.</span></h2>
+                <p style="font-size:18px; color:var(--text-gray); margin-bottom:30px; line-height:1.8;">For over three decades, Estate Elite has redefined the meaning of luxury living. We believe that a home is more than just a structure; it is an inheritance of peace and prosperity.</p>
+                <button class="btn btn-outline">Read Our Story</button>
+            </div>
+        </div>
+    </section>
+
+    <!-- 9. Featured Listings Grid (Section 9) -->
+    <section id="listings" style="background:#fcfcfc;">
+        <div class="v-title">
+            <h2>Handpicked Residences</h2>
+            <div class="line"></div>
+        </div>
+        <div class="listing-grid container">
+            <!-- Property 1 -->
+            <div class="prop-card">
+                <div class="prop-img" style="background-image:url('https://images.unsplash.com/photo-1600596542815-ffad4c1539a9?q=80&w=2075&auto=format&fit=crop')">
+                    <div class="prop-tag">FOR SALE</div>
+                </div>
+                <div class="prop-info">
+                    <h3>The Glass Mansion</h3>
+                    <p style="color:var(--text-gray); margin-bottom:15px;"><i class="fas fa-map-marker-alt"></i> Beverly Hills, CA</p>
+                    <div class="prop-price">$12,500,000</div>
+                    <div class="prop-meta">
+                        <span><i class="fas fa-bed"></i> 6 Beds</span>
+                        <span><i class="fas fa-bath"></i> 8 Baths</span>
+                        <span><i class="fas fa-expand"></i> 8,500 sqft</span>
+                    </div>
+                </div>
+            </div>
+            <!-- Property 2 -->
+            <div class="prop-card">
+                <div class="prop-img" style="background-image:url('https://images.unsplash.com/photo-1600607687940-4e5a994e5373?q=80&w=2070&auto=format&fit=crop')">
+                    <div class="prop-tag">EXCLUSIVE</div>
+                </div>
+                <div class="prop-info">
+                    <h3>Skyline Penthouse</h3>
+                    <p style="color:var(--text-gray); margin-bottom:15px;"><i class="fas fa-map-marker-alt"></i> Manhattan, NY</p>
+                    <div class="prop-price">$8,200,000</div>
+                    <div class="prop-meta">
+                        <span><i class="fas fa-bed"></i> 4 Beds</span>
+                        <span><i class="fas fa-bath"></i> 5 Baths</span>
+                        <span><i class="fas fa-expand"></i> 4,200 sqft</span>
+                    </div>
+                </div>
+            </div>
+        </div>
+    </section>
+
+    <!-- 13. Mortgage Calculator (Section 13) -->
+    <section id="calc">
+        <div class="calc-box container">
+            <div class="calc-form">
+                <h2 style="font-size:35px; margin-bottom:30px;">Mortgage Calculator</h2>
+                <label style="font-size:12px; font-weight:700;">Property Price ($)</label>
+                <input type="number" id="price" value="1000000">
+                <label style="font-size:12px; font-weight:700;">Interest Rate (%)</label>
+                <input type="number" id="interest" value="4.5">
+                <label style="font-size:12px; font-weight:700;">Loan Term (Years)</label>
+                <input type="number" id="years" value="30">
+                <button class="btn btn-gold" style="width:100%" onclick="calculateMortgage()">Calculate Monthly Payment</button>
+            </div>
+            <div style="display:flex; flex-direction:column; justify-content:center; text-align:center; border-left:1px solid #233554;">
+                <p style="text-transform:uppercase; letter-spacing:3px;">Your Estimated Payment</p>
+                <h2 id="monthly-result" style="font-size:70px; color:var(--gold); margin:20px 0;">$5,066</h2>
+                <p style="color:var(--text-gray);">*Inclusive of taxes and insurance estimates.</p>
+            </div>
+        </div>
+    </section>
+
+    <!-- 15. Elite Agents Section -->
+    <section id="agents">
+        <div class="v-title"><h2>World-Class Advisors</h2></div>
+        <div class="container" style="display:grid; grid-template-columns:repeat(auto-fit, minmax(280px, 1fr)); gap:30px;">
+            <div style="text-align:center;">
+                <img src="https://images.unsplash.com/photo-1560250097-0b93528c311a?q=80&w=1887&auto=format&fit=crop" style="width:100%; height:400px; object-fit:cover;">
+                <h4 style="margin-top:20px; font-size:20px;">Christian Vieri</h4>
+                <p style="color:var(--gold); font-size:12px; font-weight:700;">SENIOR PARTNER</p>
+            </div>
+            <div style="text-align:center;">
+                <img src="https://images.unsplash.com/photo-1573496359142-b8d87734a5a2?q=80&w=1888&auto=format&fit=crop" style="width:100%; height:400px; object-fit:cover;">
+                <h4 style="margin-top:20px; font-size:20px;">Alessandra Meyer</h4>
+                <p style="color:var(--gold); font-size:12px; font-weight:700;">LUXURY SPECIALIST</p>
+            </div>
+        </div>
+    </section>
+
+    <!-- 20. Client Success Stories -->
+    <section style="background:var(--navy); color:white;">
+        <div class="v-title"><h2 style="color:white;">Private Client Voices</h2></div>
+        <div class="container" style="display:grid; grid-template-columns:repeat(3, 1fr); gap:30px; text-align:center;">
+            <div style="padding:40px; background:var(--navy-light);">
+                <i class="fas fa-quote-left fa-2x" style="color:var(--gold); margin-bottom:20px;"></i>
+                <p>"Discretion and professionalism were my top priorities. Estate Elite exceeded every expectation in acquiring my estate."</p>
+                <h4 style="margin-top:20px; color:var(--gold);">- Sir Richard Branson</h4>
+            </div>
+            <div style="padding:40px; background:var(--navy-light);">
+                <i class="fas fa-quote-left fa-2x" style="color:var(--gold); margin-bottom:20px;"></i>
+                <p>"They don't just sell properties; they curate lifestyles. The investment advice provided was truly institutional grade."</p>
+                <h4 style="margin-top:20px; color:var(--gold);">- Elena Rossi</h4>
+            </div>
+            <div style="padding:40px; background:var(--navy-light);">
+                <i class="fas fa-quote-left fa-2x" style="color:var(--gold); margin-bottom:20px;"></i>
+                <p>"Efficient, transparent, and remarkably connected. The transition to our new penthouse was seamless."</p>
+                <h4 style="margin-top:20px; color:var(--gold);">- David Gandy</h4>
+            </div>
+        </div>
+    </section>
+
+    <!-- 26. Interactive FAQ -->
+    <section>
+        <div class="v-title"><h2>Essential Inquiries</h2></div>
+        <div class="container" style="max-width:900px;">
+            <div style="border-bottom:1px solid #eee; padding:30px 0; cursor:pointer;">
+                <h4 style="display:flex; justify-content:space-between;">WHAT IS THE AVERAGE CLOSING TIME? <i class="fas fa-plus"></i></h4>
+            </div>
+            <div style="border-bottom:1px solid #eee; padding:30px 0; cursor:pointer;">
+                <h4 style="display:flex; justify-content:space-between;">DO YOU OFFER INTERNATIONAL TAX ADVICE? <i class="fas fa-plus"></i></h4>
+            </div>
+        </div>
+    </section>
+
+    <!-- 28. Mega Footer -->
+    <footer>
+        <div class="footer-grid container">
+            <div class="footer-col">
+                <h2 class="logo" style="color:white; margin-bottom:30px;">ESTATE<span>ELITE</span></h2>
+                <p>A global leader in high-end real estate brokerage and investment advisory. Delivering legacy homes for a century.</p>
+                <div style="display:flex; gap:15px; font-size:20px; margin-top:30px;">
+                    <a href="#"><i class="fab fa-facebook"></i></a>
+                    <a href="#"><i class="fab fa-instagram"></i></a>
+                    <a href="#"><i class="fab fa-linkedin"></i></a>
+                </div>
+            </div>
+            <div class="footer-col">
+                <h4>PROPERTIES</h4>
+                <ul>
+                    <li><a href="#">Luxury Mansions</a></li>
+                    <li><a href="#">City Penthouses</a></li>
+                    <li><a href="#">Private Islands</a></li>
+                    <li><a href="#">Beachfront Villas</a></li>
+                </ul>
+            </div>
+            <div class="footer-col">
+                <h4>SERVICES</h4>
+                <ul>
+                    <li><a href="#">Buy / Sell</a></li>
+                    <li><a href="#">Wealth Management</a></li>
+                    <li><a href="#">Legal Advisory</a></li>
+                    <li><a href="#">Portfolio Growth</a></li>
+                </ul>
+            </div>
+            <div class="footer-col">
+                <h4>GLOBAL HUB</h4>
+                <ul>
+                    <li><a href="#">New York</a></li>
+                    <li><a href="#">London</a></li>
+                    <li><a href="#">Dubai</a></li>
+                    <li><a href="#">Mumbai</a></li>
+                </ul>
+            </div>
+            <div class="footer-col">
+                <h4>ADVISORY</h4>
+                <p><i class="fas fa-envelope"></i> elite@estateelite.com</p>
+                <p><i class="fas fa-phone"></i> +1 800-ESTATE-PRO</p>
+                <p><i class="fas fa-clock"></i> Private Viewings Available 24/7</p>
+            </div>
+        </div>
+        <div style="border-top:1px solid #233554; margin-top:80px; padding-top:40px; text-align:center; font-size:12px; color:var(--text-gray); letter-spacing:2px;">
+            &copy; 2026 ESTATE ELITE GLOBAL HOLDINGS. DESIGNED BY <span style="color:var(--gold)">DIGIMOMS AGENCY</span>.
+        </div>
+    </footer>
+
+    <script>
+        function calculateMortgage() {
+            const p = document.getElementById('price').value;
+            const r = (document.getElementById('interest').value / 100) / 12;
+            const n = document.getElementById('years').value * 12;
+            
+            const monthly = (p * r * Math.pow(1 + r, n)) / (Math.pow(1 + r, n) - 1);
+            document.getElementById('monthly-result').innerText = "$" + Math.round(monthly).toLocaleString();
+        }
+
+        // Smooth reveal or interactions could be added here
+    </script>
+</body>
+</html>
